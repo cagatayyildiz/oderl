@@ -1,5 +1,8 @@
+
 # ODE-RL
 Experiment code for ICML 2021 paper [Continuous-time Model-based Reinforcement Learning](https://arxiv.org/pdf/2102.04764.pdf). Implemented in `Python 3.7.7` and `torch 1.6.0` (later versions should be OK). Also requires `torchdiffeq`, `TorchDiffEqPack` and `gym`.
+
+![ENODE simulation](enode.png)
 
 ## Quick introduction
 - `runner.py` should run off-the-shelf. The file can be used to reproduce our results and it also demonstrates how to
