@@ -1,5 +1,3 @@
-# please install torchdiffeq, TorchDiffEqPack and gym
-
 import torch, os
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu') # 'cpu'
@@ -11,9 +9,9 @@ from ctrl import utils
 
 
 ################## environment and dataset ##################
-dt      = 0.1 # mean time difference between observations
-noise   = 0.0 # observation noise std
-ts_grid = 'fixed' # the distribution for the observation time differences: ['fixed','uniform','exp']
+dt      = 0.1 		# mean time difference between observations
+noise   = 0.0 		# observation noise std
+ts_grid = 'fixed' 	# the distribution for the observation time differences: ['fixed','uniform','exp']
 ENV_CLS = envs.CTCartpole # [CTPendulum, CTCartpole, CTAcrobot]
 env = ENV_CLS(dt=dt, obs_trans=True, device=device, obs_noise=noise, ts_grid=ts_grid, solver='dopri5')
 D = utils.collect_data(env, H=5.0, N=env.N0)
