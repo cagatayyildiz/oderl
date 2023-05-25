@@ -30,11 +30,11 @@ class Dynamics(nn.Module, metaclass=ABCMeta):
             self._f = ENN(L, self.qin, self.qout, n_hid_layers=nl, n_hidden=nn, act=act)
             self.ens_method = True
 
-        elif self.dynamics == 'pets':
+        elif self.dynamics == 'epnn':
             self._f = EPNN(L, self.qin, self.qout, n_hid_layers=nl, n_hidden=nn, act=act)
             self.ens_method = True
 
-        elif self.dynamics == 'deep_pilco':
+        elif self.dynamics == 'dbnn':
             self._f = DropoutBNN(self.qin, self.qout, n_hid_layers=nl, n_hidden=nn, act=act, \
                 dropout_rate=dropout)
 
@@ -134,7 +134,7 @@ class NODE(Dynamics):
 
 class PETS(Dynamics):
     def __init__(self, env, dynamics, L, nl=2, nn=100, act='relu'):
-        super().__init__(env, dynamics, L, nl=nl, nn=nn, act=act, dropout=0.0)
+        super().__init__(env, 'epnn', L, nl=nl, nn=nn, act=act, dropout=0.0)
         self.P = 20
             
     def _forward_simulate(self, solver, ts, t0s, s0, f, g, L, tau=None, compute_rew=True):
