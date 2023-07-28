@@ -388,7 +388,7 @@ def draw_from_gp(inputs, sf, ell, L=1, N=1, n_out=1, eps=1e-5):
         inputs = inputs.unsqueeze(1) 
     T = inputs.shape[0]
     cov  = K(inputs,inputs,ell,sf,eps=eps) # T,T
-    L_ = torch.cholesky(cov) # psd_safe_cholesky(cov)
+    L_ = torch.linalg.cholesky(cov) # psd_safe_cholesky(cov)
     # L,N,T,n_out or N,T,n_out or T,n_out
     return L_ @ torch.randn([L,N,T,n_out],device=inputs.device).squeeze(0).squeeze(0)
 
