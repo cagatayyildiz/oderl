@@ -130,7 +130,7 @@ class KernelInterpolation:
         self.y = y
         self.eps = eps
         self.K = K if kernel=='exp' else Klinear
-        self.KXX_inv_y = y.solve(self.K(X,X,ell,sf,eps))[0]
+        self.KXX_inv_y = torch.linalg.solve(self.K(X,X,ell,sf,eps), y)[0]
     
     def __call__(self,x):
         x = x if isinstance(x,torch.Tensor) else torch.tensor(x)

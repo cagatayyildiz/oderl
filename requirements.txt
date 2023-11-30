@@ -1,0 +1,8 @@
+gym==0.26.2
+ipython==8.14.0
+matplotlib==3.7.2
+pip-chill==1.0.3
+torchdiffeq==0.2.3
+torchdiffeqpack==1.0.1
+numpy==1.25.1
+torch==2.0.1
